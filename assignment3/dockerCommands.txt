@@ -1,0 +1,20 @@
+dirName = go-tesseract-ocr-service-master
+
+
+docker build -t ocr-tesseract .
+
+
+docker run --privileged=true -d -t -i \
+    -p 8080:80 \
+    -e UPLOADED_FILES_DIR='/tmp/pdf-cache' \
+    -v /tmp/pdf-cache:/tmp/pdf-cache ocr-tesseract
+
+
+http://localhost:8080/web/pdf
+http://localhost:8080/web/img
+
+
+http://localhost:8080/api/upload/pdf
+
+
+http://localhost:8080/api/upload/img
